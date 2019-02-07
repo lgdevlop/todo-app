@@ -1,0 +1,41 @@
+{
+  "name": "todo-app",
+  "version": "1.0.0",
+  "author": "Leonardo Gomes <lgdevlop@gmail.com>",
+  "description": "Aplicativo Web para lista de tarefas",
+  "repository": "git@github.com:lgdevlop/react-toolchain.git",
+  "keywords": [],
+  "license": "MPL-2.0",
+  "main": "index.js",
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "webpack --config=config/webpack.pro.js",
+    "dev": "webpack-dev-server --config=config/webpack.dev.js --progress --colors --inline --hot",
+    "server": "node src/server/index.js",
+    "test": "jest --env=jsdom"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-jest": "^23.6.0",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "css-loader": "^0.28.11",
+    "extract-loader": "^2.0.1",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "file-loader": "^1.1.11",
+    "html-loader": "^0.5.5",
+    "jest": "^23.6.0",
+    "mini-css-extract-plugin": "^0.4.5",
+    "optimize-css-assets-webpack-plugin": "^4.0.3",
+    "react": "^16.8.1",
+    "react-dom": "^16.8.1",
+    "rimraf": "^2.6.3",
+    "style-loader": "^0.21.0",
+    "uglifyjs-webpack-plugin": "^1.2.7",
+    "webpack": "^4.29.3",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.1.14"
+  }
+}
