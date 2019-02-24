@@ -1,0 +1,222 @@
+swagger: '2.0'
+info:
+  title: Lista de Tarefas
+  description: Esta API é utilizada para gerenciar uma lista de tarefas
+  version: 0.0.1
+  contact:
+    name: Leonardo Gomes
+    email: lgdevlop@gmail.com
+host: 'localhost:4444'
+basePath: /v1
+schemes:
+  - http
+produces:
+  - application/json
+paths:
+  /todos:
+    get:
+      summary: Retorna todas as tarefas ou todas tarefas por estado
+      description: >-
+        Este endpoint retorna todas as tarefas cadastradas **ou as tarefas
+        pertencentes a um determinado estado informado via query string**
+      tags:
+        - Todos
+      parameters:
+        - in: query
+          name: estado
+          description: Estado da tarefa
+          required: false
+          type: string
+      responses:
+        '200':
+          description: Retorna uma lista de tarefas
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Todo'
+        '202':
+          description: Não encontrada tarefas no banco de dados
+          schema:
+            type: string
+            description: Não Encontrada
+        '500':
+          description: Erro interno do servidor
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Adiciona nova tarefa ao banco de dados
+      description: Este endpoint cria uma nova tarefa no banco de dados
+      tags:
+        - Todos
+      parameters:
+        - name: todos
+          in: body
+          description: Tarefa
+          required: true
+          schema:
+            $ref: '#/definitions/Tarefa'
+      operationId: addTodo
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '201':
+          description: Retorna a tarefa cadastrada com sucesso
+          schema:
+            $ref: '#/definitions/Todo'
+        '500':
+          description: Erro interno do servidor
+          schema:
+            $ref: '#/definitions/Error'
+  '/todos/{id}':
+    get:
+      summary: Retorna a tarefa correspondente ao ID informado
+      description: >-
+        Este endpoint retorna a tarefa que contém o ID informado cadastrado no
+        banco de dados
+      parameters:
+        - name: id
+          in: path
+          description: ID da tarefa
+          required: true
+          type: string
+      tags:
+        - ID
+      responses:
+        '200':
+          description: Retorna uma lista de tarefas
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Todo'
+        '202':
+          description: Não encontrada tarefa no banco de dados
+          schema:
+            type: string
+            description: Não Encontrada
+        '400':
+          description: ID da tarefa inválido
+          schema:
+            type: string
+            description: Bad Request
+        '500':
+          description: Erro interno do servidor
+          schema:
+            $ref: '#/definitions/Error'
+    put:
+      tags:
+        - ID
+      summary: Atualiza uma tarefa por seu ID
+      description: Atualiza a tarefa referente ao ID informado
+      parameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+          description: Identificador da tarefa e seu estado
+        - in: body
+          name: todo
+          description: Identificador da tarefa e seu estado
+          required: true
+          schema:
+            $ref: '#/definitions/TodoUpdate'
+      responses:
+        '200':
+          description: Retorna a tarefa atualizada com sucesso
+          schema:
+            $ref: '#/definitions/Todo'
+        '202':
+          description: Tarefa não encontrada
+          schema:
+            type: string
+            description: Não Encontrada
+        '400':
+          description: ID da tarefa inválido
+          schema:
+            type: string
+            description: Bad Request
+        '500':
+          description: Erro interno do servidor
+          schema:
+            $ref: '#/definitions/Error'
+    delete:
+      tags:
+        - ID
+      summary: Apaga uma tarefa por seu ID
+      description: Apaga a tarefa referente ao ID informado
+      parameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+          description: Identificador da tarefa e seu estado
+      responses:
+        '200':
+          description: Retorna a mensagem que a tarefa foi removida com sucesso
+          schema:
+            type: string
+            description: removido
+        '202':
+          description: Mensagem de erro informando que não foi encontrada a tarefa
+          schema:
+            type: string
+            description: ID não encontrado no Banco de Dados
+        '400':
+          description: ID da tarefa inválido
+          schema:
+            type: string
+            description: Bad Request
+        '500':
+          description: Erro interno do servidor
+          schema:
+            $ref: '#/definitions/Error'
+definitions:
+  Todo:
+    type: object
+    properties:
+      _id:
+        type: string
+        description: O campo _id gerado pelo MongoDB
+      nome:
+        type: string
+        description: Nome da tarefa
+      estado:
+        type: string
+        description: 'Estado da tarefa, únicos valores. ativo ou completado'
+        enum:
+          - ativo
+          - completado
+  TodoUpdate:
+    type: object
+    properties:
+      id:
+        type: string
+        description: O campo _id gerado pelo MongoDB
+      estado:
+        type: string
+        description: 'Estado da tarefa, únicos valores. ativo ou completado'
+        enum:
+          - ativo
+          - completado
+  Tarefa:
+    type: object
+    properties:
+      nome:
+        type: string
+        description: Nome da tarefa
+      estado:
+        type: string
+        description: 'Estado da tarefa, únicos valores. ativo ou completado'
+        enum:
+          - ativo
+          - completado
+  Error:
+    type: object
+    properties:
+      code:
+        type: integer
+        description: Código de erro
+      message:
+        type: string
+        description: Mensagem de erro

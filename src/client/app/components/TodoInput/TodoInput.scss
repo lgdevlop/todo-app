@@ -1,0 +1,41 @@
+@import "../../../scss/mixins.scss";
+
+.container__todo-input {
+  display: flex;
+  // width: 55vw;
+
+  & button {
+    margin-left: .4vw;
+    background: rgb(16, 92, 233);
+    // // background-color: transparent;
+    // color: #FFF;
+    // border: none;
+    // border-color: rgb(28, 184, 65);
+    // background: rgb(28, 184, 65);
+    // border-radius: 12px;
+    // text-decoration: none;
+    // text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    // outline: 0;
+    // -webkit-appearance: none;
+    // -moz-appearance: none;
+
+    // padding: .2em .6em;
+    // transition: background 250ms ease-in-out, 
+    //             transform 150ms ease;
+
+    // &:hover {
+    //   background-image: linear-gradient(transparent,rgba(0,0,0,.05) 40%,rgba(0,0,0,.1));
+    //   cursor: pointer;
+    //   border-color: rgb(28, 184, 65);
+    //   box-shadow: 0 0 8px 0 rgb(28, 184, 65);
+    // }
+
+    // &:active {
+    //   transform: scale(0.94);
+    // }
+
+    // & i {
+    //   @include fluid-typo(14, 22, 1259, 340);
+    // }
+  }
+}

@@ -1,0 +1,9 @@
+@import "../../../scss/mixins.scss";
+
+.container__icon {
+
+  & i {
+    color: #CCC;
+    @include fluid-typo(14, 18, 1259, 340);
+  }
+}

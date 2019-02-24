@@ -1,0 +1,26 @@
+version: "2"
+
+services:
+  # Container do MongoDB
+  dbmongo:
+    image: mongo
+
+  # Versao Final do Projeto de Backend
+  backend:
+    build:
+      context: .
+      dockerfile: backend.Dockerfile
+    depends_on:
+      - dbmongo
+    image: todobackend
+    ports:
+      - "4444:4444"
+
+  # Versao Final do Projeto de Frontend
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend.Dockerfile
+    image: todofrontend
+    ports:
+      - "8080:8080"

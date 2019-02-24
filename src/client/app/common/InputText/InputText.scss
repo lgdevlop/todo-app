@@ -1,0 +1,28 @@
+@import "../../../scss/mixins.scss";
+
+.container__input-text {
+
+  & input {
+    width: 35vw;
+    font-family: "Roboto";
+    @include fluid-typo(14, 22, 1259, 340);
+    font-weight: normal;
+    color: rgba(48, 17, 228, 0.9);
+    padding-left: .7vw;
+    border: 2px solid dodgerBlue;
+    border-radius: 4px;
+    outline:none;
+    box-sizing: border-box;
+    transition: .3s;
+
+    &::placeholder {
+      color: dodgerBlue;
+      opacity: .4;
+    }
+
+    &:focus {
+      border-color:dodgerBlue;
+      box-shadow:0 0 8px 0 dodgerBlue;
+    }
+  }
+}

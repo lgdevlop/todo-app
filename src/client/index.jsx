@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './css/style.css'
+import './scss/style.scss'
 import './index.html'
+import App from './app'
 
-ReactDOM.render(<h1>React Rules!</h1>, document.getElementById('app'))
+ReactDOM.render(<App/>, document.getElementById('app'))

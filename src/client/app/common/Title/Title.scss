@@ -1,0 +1,17 @@
+// @import url('https://fonts.googleapis.com/css?family=Fira+Sans:300,400,500,700');
+@import "../../../scss/mixins.scss";
+@import url('https://fonts.googleapis.com/css?family=Roboto:700');
+.container__title{
+  width: 60vw;
+
+  & h1 {
+    font-family: 'Roboto','Segoe UI', Tahoma, Verdana, sans-serif;
+    @include fluid-typo(30, 40, 1259, 340);
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #333;
+  }
+
+}

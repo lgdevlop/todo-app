@@ -1,0 +1,10 @@
+.todo__list-item {
+  display: flex;
+  // width: 55vw;
+}
+
+.list-item--completed {
+  color: #CCC;
+  text-decoration: line-through;
+  text-decoration-color: #888;
+}

@@ -1,0 +1,8 @@
+.container__todo-actions {
+  display: flex;
+  margin-top: 5vh;
+
+  & .container__button:not(:first-of-type) {
+    margin-left: .5vw;
+  }
+}
