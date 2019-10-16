@@ -1,4 +1,5 @@
 const path = require("path");
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -106,7 +107,25 @@ module.exports = {
             }
           }
         ]
+      },
+      {
+        type: 'javascript/auto',
+        test: /\.json$/,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "[name].[ext]"
+            }
+          }
+        ]
       }
     ]
-  }
+  },
+  plugins: [
+    new CopyPlugin([
+      { from: 'src/client/images', to: 'images' },
+      { from: 'src/client/sw.js', to: 'sw.js' },
+    ]),
+  ],
 };

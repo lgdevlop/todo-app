@@ -4,6 +4,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 // const HtmlWebpackPlugin = require('html-webpack-plugin')
 const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -108,6 +109,18 @@ module.exports = {
             }
           }
         ]
+      },
+      {
+        type: 'javascript/auto',
+        test: /\.json$/,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "[name].[ext]"
+            }
+          }
+        ]
       }
     ]
   },
@@ -150,7 +163,11 @@ module.exports = {
       cssProcessor: require("cssnano"),
       cssProcessorOptions: { safe: true, discardComments: { removeAll: true } },
       canPrint: true
-    })
+    }),
+    new CopyPlugin([
+      { from: 'src/client/images', to: 'images' },
+      { from: 'src/client/sw.js', to: 'sw.js' },
+    ])
     // new HtmlWebpackPlugin({
     //   inject: false,
     //   hash: true,
