@@ -43,7 +43,7 @@
     "file-loader": "^1.1.11",
     "html-loader": "^0.5.5",
     "mini-css-extract-plugin": "^0.4.5",
-    "node-sass": "^4.11.0",
+    "node-sass": "^7.0.0",
     "optimize-css-assets-webpack-plugin": "^4.0.3",
     "pm2": "^3.3.1",
     "react": "^16.8.3",
