@@ -45,7 +45,7 @@
     "mini-css-extract-plugin": "^0.4.5",
     "node-sass": "^4.11.0",
     "optimize-css-assets-webpack-plugin": "^4.0.3",
-    "pm2": "^3.3.1",
+    "pm2": "^5.2.2",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "rimraf": "^2.6.3",
